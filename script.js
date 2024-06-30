@@ -11,6 +11,8 @@ searchButton.addEventListener('click', () => {
     }
 });
 function fetchWeather(location){
+    const body = document.body;
+    body.style.opacity = '0';
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`)
           .then(response => {
               if (!response.ok) {
@@ -31,4 +33,7 @@ function fetchWeather(location){
               temperatureElement.textContent = 'N/A';
               descriptionElement.textContent = 'Could not fetch weather data.';
         });
+        setTimeout(() => {
+            body.style.opacity = '1';
+        }, 500);
 }
